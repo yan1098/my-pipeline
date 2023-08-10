@@ -18,7 +18,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.x  # Set the desired Go version
+          go-version: 1.20
 
       - name: Lint and vet code
         run: |
@@ -26,13 +26,13 @@ jobs:
           golint ./...
           
       - name: Build Docker image
-        run: docker build -t your-image-name:latest .
+        run: docker build -t latest:latest .
 
       - name: Log in to Dockerhub
-        run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: docker login -u ${{ secrets.yanchernov2@gmail.com }} -p ${{ secrets.Steamc0mmunityclu! }}
 
       - name: Push Docker image
         run: |
-          docker tag your-image-name:latest your-dockerhub-username/your-image-name:latest
-          docker push your-dockerhub-username/your-image-name:latest
+          docker tag latest:latest yanchernov2@gmail.com/latest:latest
+          docker push yanchernov2@gmail.com/latest:latest
 
