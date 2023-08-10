@@ -1,0 +1,35 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.20
+
+      - name: Lint and vet code
+        run: |
+          go get golang.org/x/lint/golint
+          golint ./...
+          
+      - name: Build Docker image
+        run: docker build -t latest:latest .
+
+      - name: Log in to Dockerhub
+        run: docker login -u ${{ secrets.yanchernov2@gmail.com }} -p ${{ secrets.Steamc0mmunityclu! }}
+
+      - name: Push Docker image
+        run: |
+          docker tag latest:latest yanchernov2@gmail.com/latest:latest
+          docker push yanchernov2@gmail.com/latest:latest
